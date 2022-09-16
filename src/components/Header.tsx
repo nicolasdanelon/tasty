@@ -12,7 +12,7 @@ function Header() {
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <a href="#" className="flex items-center mb-4 sm:mb-0">
-                  <Logo color="#862DF7" />
+                  <Logo color="#862DF7" scale={0.7} />
                 </a>
               </div>
               <div className="hidden md:block">
