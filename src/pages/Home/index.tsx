@@ -47,12 +47,7 @@ const Home = () => {
                   </p>
                   <div>
                     <div class="my-2">
-                      <a
-                        href="#"
-                        className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white border border-gray-300 rounded-lg hover:bg-gray-800 focus:ring-4 focus:ring-gray-100"
-                      >
-                        Conectar wallet
-                      </a>
+                      <LoginButton classCSS="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white border border-gray-300 rounded-lg hover:bg-gray-800 focus:ring-4 focus:ring-gray-100" />
                     </div>
                     <div>
                       <a
