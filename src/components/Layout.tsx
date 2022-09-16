@@ -1,14 +1,13 @@
 import { h } from "preact";
 import { Outlet } from "react-router-dom";
 import Logo from "../assets/Logo";
+import Header from "./Header";
 
 const Layout = () => {
   return (
     <div class="flex flex-col h-screen justify-between">
-      <header class="h-100 bg-red-500">
-        <div>holas!</div>
-      </header>
-      <main class="mb-auto h-100 bg-green-500">
+      <Header />
+      <main class="mb-auto h-10 bg-green-500">
         <Outlet />
       </main>
       <footer
