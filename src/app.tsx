@@ -2,6 +2,7 @@ import { h } from "preact";
 import { Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
+import Test from "./pages/Test/index";
 import Layout from "./components/Layout";
 
 export function App() {
@@ -10,7 +11,7 @@ export function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="test" element={() => <p>Holis</p>} />
+          <Route path="test" element={<Test />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
