@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import Logo from "../assets/Logo";
 import PolygonIcon from "../assets/PolygonIcon";
+import LoginButton from "./LoginButton";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -94,8 +95,8 @@ function Header() {
             </div>
             <div className="flex-shrink-0">
               <a href="#" className="flex items-center mb-4 sm:mb-0">
+                <LoginButton />
                 <PolygonIcon />
-                Login
               </a>
             </div>
           </div>
