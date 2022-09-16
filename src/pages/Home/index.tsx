@@ -1,10 +1,8 @@
 import { h } from "preact";
 import { useEffect, useState } from "preact/hooks";
-import restaurants from "../../data/restaurants.json";
 import Carousel from "../../components/Carousel";
 import Hero from "../../components/Hero";
 import LoginButton from "../../components/LoginButton";
-// import { memo } from "preact/compat";
 
 const Home = () => {
   const [test, setTest] = useState(0);
@@ -26,7 +24,7 @@ const Home = () => {
               <div class="flex lg:py-12">
                 <img
                   src="footer-people.png"
-                  class="w-full rounded-lg shadow-lg"
+                  className="w-full rounded-lg shadow-lg"
                   id="cta-img-nml-50"
                   style="z-index: 10"
                   alt=""

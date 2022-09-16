@@ -8,6 +8,12 @@ const { ethereum } = window;
 const LoginButton = ({ classCSS }: { classCSS: string }) => {
   const { connect, metaState } = useMetamask();
   const [axx, setAxx] = useState("");
+
+  const styles =
+    classCSS !== undefined
+      ? classCSS
+      : "font-medium text-indigo-600 hover:text-indigo-500";
+
   useEffect(() => {
     if (!metaState.isConnected) {
       (async () => {
@@ -52,28 +58,14 @@ const LoginButton = ({ classCSS }: { classCSS: string }) => {
 
   if (metaState.isConnected) {
     return (
-      <button
-        className={
-          classCSS !== undefined
-            ? classCSS
-            : "font-medium text-indigo-600 hover:text-indigo-500"
-        }
-        title={axx}
-      >
+      <button className={styles} title={axx}>
         {metaState.account[0].slice(0, 5)}...
         {metaState.account[0].slice(38, 42)}
       </button>
     );
   } else {
     return (
-      <button
-        className={
-          classCSS !== undefined
-            ? classCSS
-            : "font-medium text-indigo-600 hover:text-indigo-500"
-        }
-        onClick={connectWallet}
-      >
+      <button className={styles} onClick={connectWallet}>
         Connect wallet
       </button>
     );
