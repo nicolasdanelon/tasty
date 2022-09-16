@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import Logo from "../assets/Logo";
+import PolygonIcon from "../assets/PolygonIcon";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -90,6 +91,12 @@ function Header() {
                   </svg>
                 )}
               </button>
+            </div>
+            <div className="flex-shrink-0">
+              <a href="#" className="flex items-center mb-4 sm:mb-0">
+                <PolygonIcon />
+                Login
+              </a>
             </div>
           </div>
         </div>
