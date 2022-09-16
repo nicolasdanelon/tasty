@@ -100,7 +100,6 @@ function Header() {
             </div>
           </div>
         </div>
-
         <Transition
           show={isOpen}
           enter="transition ease-out duration-100 transform"
