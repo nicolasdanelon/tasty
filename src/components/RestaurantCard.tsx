@@ -1,8 +1,10 @@
 import { h } from "preact";
+import { useState } from "preact/hooks";
 
 const RestaurantCard = (props: { restaurant: any }) => {
   const { restaurant } = props;
   const { name, address, img, rating } = restaurant;
+  const [showModal, setShowModal] = useState(false);
   return (
     <div class="flex justify-center rounded-md">
       <div class="rounded-lg shadow-lg bg-white max-w-sm">
@@ -79,6 +81,7 @@ const RestaurantCard = (props: { restaurant: any }) => {
           </div>
           <button
             type="button"
+            onClick={() => setShowModal(true)}
             className=" inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
           >
             Reservar mesa
@@ -89,6 +92,8 @@ const RestaurantCard = (props: { restaurant: any }) => {
           </p>
         </div>
       </div>
+
+      <div>{showModal ? <></> : null}</div>
     </div>
   );
 };
