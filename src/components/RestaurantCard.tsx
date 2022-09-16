@@ -1,5 +1,6 @@
 import { h } from "preact";
 import { useState } from "preact/hooks";
+import ModalReservationBody from "./ModalReservationBody";
 
 const RestaurantCard = (props: { restaurant: any }) => {
   const { restaurant } = props;
@@ -93,7 +94,7 @@ const RestaurantCard = (props: { restaurant: any }) => {
         </div>
       </div>
 
-      <div>{showModal ? <></> : null}</div>
+      <div>{showModal ? <ModalReservationBody /> : null}</div>
     </div>
   );
 };
