@@ -4,6 +4,7 @@ import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import Test from "./pages/Test/index";
 import Layout from "./components/Layout";
+import Restaurant from "./pages/Restaurant";
 
 export function App() {
   return (
@@ -12,6 +13,8 @@ export function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="test" element={<Test />} />
+          <Route path="/restaurants" element={<Restaurant />} />
+          <Route path="test" element={() => <p>Holis</p>} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

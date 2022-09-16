@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Tres Monos",
+    "address": "Guatemala 4899, CABA",
+    "rating": 1.2,
+    "availablePlaces": 1,
+    "img": "restaurants/tres-monos.png"
+  },
+  {
+    "id": 2,
+    "name": "La Ferneteria",
+    "address": "Serrano 1349, CABA",
+    "rating": 3.4,
+    "availablePlaces": 1,
+    "img": "restaurants/ferneteria.png"
+  },
+  {
+    "id": 3,
+    "name": "Boticario",
+    "address": "Honduras 5207, CABA",
+    "rating": 4.5,
+    "availablePlaces": 1,
+    "img": "restaurants/boticario.png"
+  },
+  {
+    "id": 4,
+    "name": "El Purgatorio",
+    "address": "Arévalo 2045, CABA",
+    "rating": 5.0,
+    "availablePlaces": 1,
+    "img": "restaurants/purgatorio.png"
+  },
+  {
+    "id": 5,
+    "name": "Anchoita",
+    "address": "Juan Ramírez de Velasco 1520, CABA",
+    "rating": 3.4,
+    "availablePlaces": 1,
+    "img": "restaurants/anchoita.png"
+  }
+]

@@ -7,10 +7,10 @@ const Layout = () => {
   return (
     <div class="flex flex-col h-screen justify-between">
       <Header />
-      
         <Outlet />
+      <Outlet />
       <footer
-        class="p-4 bg-white shadow md:px-6 md:py-4 dark:bg-gray-900"
+        class="p-4 bg-white shadow mt-10	 md:px-6 md:py-4 dark:bg-gray-900"
         style={{ backgroundColor: "#862DF7" }}
       >
         <div class="sm:flex sm:items-center sm:justify-between">
