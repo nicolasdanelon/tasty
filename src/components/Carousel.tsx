@@ -110,7 +110,7 @@ const Carousel = () => {
             return (
               <div
                 key={index}
-                className="carousel-item text-center relative w-64 h-64 snap-start"
+                className="carousel-item text-center relative w-80 h-80 snap-start"
               >
                 <a
                   className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
