@@ -3,6 +3,7 @@ import { useEffect, useState } from "preact/hooks";
 import restaurants from "../../data/restaurants.json";
 import Carousel from "../../components/Carousel";
 import Hero from "../../components/Hero";
+import LoginButton from "../../components/LoginButton";
 // import { memo } from "preact/compat";
 
 const Home = () => {

@@ -5,7 +5,7 @@ import { useEffect, useState } from "preact/compat";
 // @ts-ignore
 const { ethereum } = window;
 
-const LoginButton = () => {
+const LoginButton = ({ classCSS }: { classCSS: string }) => {
   const { connect, metaState } = useMetamask();
   const [axx, setAxx] = useState("");
   useEffect(() => {
@@ -53,7 +53,11 @@ const LoginButton = () => {
   if (metaState.isConnected) {
     return (
       <button
-        className="font-medium text-indigo-600 hover:text-indigo-500"
+        className={
+          classCSS !== undefined
+            ? classCSS
+            : "font-medium text-indigo-600 hover:text-indigo-500"
+        }
         title={axx}
       >
         {metaState.account[0].slice(0, 5)}...
@@ -63,7 +67,11 @@ const LoginButton = () => {
   } else {
     return (
       <button
-        className="font-medium text-indigo-600 hover:text-indigo-500"
+        className={
+          classCSS !== undefined
+            ? classCSS
+            : "font-medium text-indigo-600 hover:text-indigo-500"
+        }
         onClick={connectWallet}
       >
         Connect wallet
