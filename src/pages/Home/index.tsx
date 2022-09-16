@@ -55,7 +55,7 @@ const Home = () => {
                     </div>
                     <div>
                       <a
-                        href="#"
+                        href="/restaurants"
                         className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white border border-gray-300 rounded-lg hover:bg-gray-800 focus:ring-4 focus:ring-gray-100"
                       >
                         Ver restaurantes
