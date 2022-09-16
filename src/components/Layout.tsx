@@ -7,9 +7,7 @@ const Layout = () => {
   return (
     <div class="flex flex-col h-screen justify-between">
       <Header />
-      <main class="mb-auto h-10 bg-green-500">
-        <Outlet />
-      </main>
+      <Outlet />
       <footer
         class="p-4 bg-white shadow md:px-6 md:py-4 dark:bg-gray-900"
         style={{ backgroundColor: "#862DF7" }}
