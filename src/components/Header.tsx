@@ -45,7 +45,7 @@ function Header() {
 
             <div class="relative ml-3">
               <div>
-                <a href="#" className="flex items-center mb-4 sm:mb-0">
+                <a href="#" className="flex items-center mb-4 sm:mb-0 gap-5">
                   <LoginButton />
                   <PolygonIcon />
                 </a>
