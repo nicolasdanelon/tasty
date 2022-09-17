@@ -1,6 +1,9 @@
 import { useMetamask } from "use-metamask";
 import { ethers } from "ethers";
 import { useEffect, useState } from "preact/compat";
+import Logo from "../assets/Logo";
+import { NavLink } from "react-router-dom";
+import React from "react";
 
 // @ts-ignore
 const { ethereum } = window;
@@ -57,10 +60,10 @@ const LoginButton = ({ classCSS }: { classCSS?: string }) => {
 
   if (metaState.isConnected) {
     return (
-      <button className={styles} title={axx}>
+      <NavLink to="/profile" className={styles} title={axx}>
         {metaState.account[0].slice(0, 5)}...
         {metaState.account[0].slice(38, 42)}
-      </button>
+      </NavLink>
     );
   } else {
     return (
