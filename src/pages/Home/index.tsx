@@ -5,12 +5,23 @@ import Hero from "../../components/Hero";
 import LoginButton from "../../components/LoginButton";
 import { NavLink } from "react-router-dom";
 import React from "react";
+import useTastyTokenContract, {
+  changeNetwork,
+} from "../../helpers/useTastyTokenContract";
 
 const Home = () => {
-  const [test, setTest] = useState(0);
-
   useEffect(() => {
-    setTest(1);
+    (async () => {
+      const tasty = useTastyTokenContract();
+
+      const { chainId } = await tasty.provider.getNetwork();
+
+      console.log({ chainId });
+
+      if (chainId === 4) {
+        await changeNetwork();
+      }
+    })();
   }, []);
 
   return (
