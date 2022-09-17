@@ -1,0 +1,59 @@
+[
+    {
+      "id": 1,
+      "name": "Tres Monos",
+      "address": "Guatemala 4899, CABA",
+      "date": "17 de septiembre",
+      "time": "20:00hs.",
+      "area": "Ventana",
+      "tableId": 3,
+      "diners": 4,
+      "img": "restaurants/tres-monos.png"
+    },
+
+    {
+        "id": 2,
+        "name": "La Ferneteria",
+        "address": "Serrano 1349, CABA",
+        "date": "24 de septiembre",
+        "time": "21:00hs.",
+        "area": "Ventana",
+        "tableId": 12,
+        "diners": 6,
+        "rating": 3.4,
+        "img": "restaurants/ferneteria.png"
+      },
+      {
+        "id": 3,
+        "name": "Boticario",
+        "address": "Honduras 5207, CABA",
+        "date": "12 de octubre",
+        "time": "23:00hs.",
+        "area": "Ventana",
+        "tableId": 8,
+        "diners": 4,
+        "img": "restaurants/boticario.png"
+      },
+      {
+        "id": 4,
+        "name": "El Purgatorio",
+        "address": "Arévalo 2045, CABA",
+        "date": "15 de noviembre",
+        "time": "21:00hs.",
+        "area": "Ventana",
+        "tableId": 13,
+        "diners": 4,
+        "img": "restaurants/purgatorio.png"
+      },
+      {
+        "id": 5,
+        "name": "Anchoita",
+        "address": "Juan Ramírez de Velasco 1520, CABA",
+        "date": "2 de diciembre",
+        "time": "22:00hs.",
+        "area": "Ventana",
+        "tableId": 15,
+        "diners": 2,
+        "img": "restaurants/anchoita.png"
+      }
+]
