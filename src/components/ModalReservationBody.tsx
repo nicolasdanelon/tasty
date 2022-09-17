@@ -5,12 +5,12 @@ const ModalReservationBody = ({ setShowModal, restaurant }) => {
   return (
     <div>
       <div
-        className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mx-auto"
+        className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 mx-auto"
         style={{ padding: 10 }}
       >
         <div className="px-6 flex flex-wrap">
           <div className="block w-full relative">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white block">
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 block">
               {restaurant.name}
               <span
                 title="Close"
