@@ -2,13 +2,19 @@ import { h } from "preact";
 import { useState } from "react";
 import dates from "../data/dates.json";
 import times from "../data/times.json";
-import restaurants from "../data/restaurants.json";
-import RestaurantCard from "./RestaurantCard";
+import useTastyTokenContract from "../helpers/useTastyTokenContract";
 
 // @ts-ignore
 const ModalReservationBody = ({ setShowModal, restaurant }) => {
   const [selectedDate, setSelectedDate] = useState(1);
   const [selectedTime, setSelectedTime] = useState(1);
+
+  const tasty = useTastyTokenContract();
+
+  const makeReservation = async () => {
+    await tasty.contract.reserve();
+  };
+
   return (
     <div>
       <div
