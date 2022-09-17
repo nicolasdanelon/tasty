@@ -1477,11 +1477,6 @@
     "loose-envify" "^1.1.0"
     "scheduler" "^0.23.0"
 
-"react-icons@^4.4.0":
-  "integrity" "sha512-fSbvHeVYo/B5/L4VhB7sBA1i2tS8MkT0Hb9t2H1AVPkwGfVHLJCqyr2Py9dKMxsyM63Eng1GkdZfbWj+Fmv8Rg=="
-  "resolved" "https://registry.npmjs.org/react-icons/-/react-icons-4.4.0.tgz"
-  "version" "4.4.0"
-
 "react-router-dom@^6.3.0":
   "integrity" "sha512-4Aw1xmXKeleYYQ3x0Lcl2undHR6yMjXZjd9DKZd53SGOYqirrUThyUb0wwAX5VZAyvSuzjNJmZlJ3rR9+/vzqg=="
   "resolved" "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.4.0.tgz"
@@ -1496,7 +1491,7 @@
   dependencies:
     "@remix-run/router" "1.0.0"
 
-"react@*", "react@^16 || ^17 || ^18", "react@^18.2.0", "react@>=16", "react@>=16.8":
+"react@^16 || ^17 || ^18", "react@^18.2.0", "react@>=16", "react@>=16.8":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"

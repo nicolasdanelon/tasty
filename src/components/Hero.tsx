@@ -1,6 +1,5 @@
 import { h } from "preact";
 import LoginButton from "./LoginButton";
-import { MdPlace } from "react-icons/md";
 
 const Hero = () => {
   return (
