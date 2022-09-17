@@ -6,7 +6,7 @@ import useTastyTokenContract from "../helpers/useTastyTokenContract";
 
 // @ts-ignore
 const ModalReservationBody = ({ setShowModal, restaurant }) => {
-  const [selectedDate, setSelectedDate] = useState(1);
+  const [selectedDate, setSelectedDate] = useState("17/09");
   const [selectedTime, setSelectedTime] = useState(1);
 
   const tasty = useTastyTokenContract();
@@ -49,9 +49,9 @@ const ModalReservationBody = ({ setShowModal, restaurant }) => {
             <div style={"display: flex"} class="justify-between">
               {dates.map((date) => (
                 <button
-                  onClick={() => setSelectedDate(date.id)}
+                  onClick={() => setSelectedDate(date.date)}
                   className={`mx-2 my-2 bg-violet-700 transition duration-150 ease-in-out hover:bg-violet-600 rounded text-white px-6 py-2 text-xs  ${
-                    date.id === selectedDate
+                    date.date === selectedDate
                       ? "outline-none ring-2 ring-offset-2  ring-indigo-600"
                       : ""
                   }`}
