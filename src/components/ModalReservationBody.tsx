@@ -4,6 +4,28 @@ import dates from "../data/dates.json";
 import times from "../data/times.json";
 import useTastyTokenContract from "../helpers/useTastyTokenContract";
 
+export const changeNetwork = async () => {
+  window.ethereum.request({
+    method: "wallet_addEthereumChain",
+    params: [
+      {
+        chainId: "4",
+        rpcUrls: [
+          "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+          "https://rpc.ankr.com/eth_rinkeby",
+        ],
+        chainName: "Rinkeby ETH",
+        nativeCurrency: {
+          name: "ETH",
+          symbol: "ETH",
+          decimals: 18,
+        },
+        blockExplorerUrls: ["https://rinkeby.etherscan.io/"],
+      },
+    ],
+  });
+};
+
 // @ts-ignore
 const ModalReservationBody = ({ setShowModal, restaurant }) => {
   const [selectedDate, setSelectedDate] = useState("17/09");
@@ -12,6 +34,13 @@ const ModalReservationBody = ({ setShowModal, restaurant }) => {
   const makeReservation = async () => {
     try {
       const tasty = useTastyTokenContract();
+
+      const { chainId } = await tasty.provider.getNetwork();
+
+      if (chainId === 3) {
+        changeNetwork();
+      }
+
       const dates = selectedDate.split("/");
       await tasty.contract.reserve(selectedTime, dates[0], dates[1]);
     } catch (e) {

@@ -26,7 +26,8 @@ const TastyTokenABI = [
   "event ApprovalForAll(address indexed _owner, address indexed _operator, bool _approved);",
 ];
 
-const contractAddress = "0x0000000000000000000000000000000000000000";
+// Rinkeby
+const contractAddress = "0x8F7F9dfBfbD3875e6013b7DABd1c1523bd8e149B";
 
 export default function useTastyTokenContract() {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
