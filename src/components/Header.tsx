@@ -25,18 +25,11 @@ function Header() {
                     href="#"
                     className="text-black hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Home
-                  </a>
-
-                  <a
-                    href="#"
-                    className="text-black hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium"
-                  >
                     Quiénes somos
                   </a>
 
                   <a
-                    href="#"
+                    href="restaurants"
                     className="text-black hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Restaurantes
@@ -123,18 +116,11 @@ function Header() {
                   href="#"
                   className="text-black hover:bg-gray-200  block px-3 py-2 rounded-md text-base font-medium"
                 >
-                  Home
-                </a>
-
-                <a
-                  href="#"
-                  className="text-black hover:bg-gray-200  block px-3 py-2 rounded-md text-base font-medium"
-                >
                   Quiénes somos
                 </a>
 
                 <a
-                  href="#"
+                  href="restaurants"
                   className="text-black hover:bg-gray-200  block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Restaurantes
