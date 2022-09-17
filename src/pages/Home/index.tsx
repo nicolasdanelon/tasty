@@ -3,6 +3,8 @@ import { useEffect, useState } from "preact/hooks";
 import Carousel from "../../components/Carousel";
 import Hero from "../../components/Hero";
 import LoginButton from "../../components/LoginButton";
+import { NavLink } from "react-router-dom";
+import React from "react";
 
 const Home = () => {
   const [test, setTest] = useState(0);
@@ -48,12 +50,12 @@ const Home = () => {
                       <LoginButton classCSS="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white border border-gray-300 rounded-lg hover:bg-gray-800 focus:ring-4 focus:ring-gray-100" />
                     </div>
                     <div>
-                      <a
-                        href="/restaurants"
+                      <NavLink
+                        to="restaurants"
                         className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white border border-gray-300 rounded-lg hover:bg-gray-800 focus:ring-4 focus:ring-gray-100"
                       >
                         Ver restaurantes
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                 </div>

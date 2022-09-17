@@ -27,14 +27,12 @@ function Header() {
                   >
                     Quiénes somos
                   </a>
-
-                  <a
-                    href="restaurants"
+                  <NavLink
+                    to="restaurants"
                     className="text-black hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Restaurantes
-                  </a>
-
+                  </NavLink>
                   <a
                     href="#"
                     className="text-black hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium"
