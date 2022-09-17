@@ -20,7 +20,7 @@ const LoginButton = ({ classCSS }: { classCSS: string }) => {
         try {
           await connect(ethers.providers.Web3Provider, "any");
         } catch (error) {
-          console.error(error);
+          // console.error(error);
         }
       })();
     } else {
@@ -34,7 +34,7 @@ const LoginButton = ({ classCSS }: { classCSS: string }) => {
         try {
           await connect(ethers.providers.Web3Provider, "any");
         } catch (error) {
-          console.log(error);
+          // console.log(error);
         }
       })();
     }
