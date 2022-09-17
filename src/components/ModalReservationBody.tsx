@@ -1,7 +1,14 @@
 import { h } from "preact";
+import { useState } from "react";
+import dates from "../data/dates.json";
+import times from "../data/times.json";
+import restaurants from "../data/restaurants.json";
+import RestaurantCard from "./RestaurantCard";
 
 // @ts-ignore
 const ModalReservationBody = ({ setShowModal, restaurant }) => {
+  const [selectedDate, setSelectedDate] = useState(1);
+  const [selectedTime, setSelectedTime] = useState(1);
   return (
     <div>
       <div
@@ -10,7 +17,7 @@ const ModalReservationBody = ({ setShowModal, restaurant }) => {
       >
         <div className="px-6 flex flex-wrap">
           <div className="block w-full relative">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 block">
+            <h5 className="mt-3 mb-2 text-2xl font-bold tracking-tight text-gray-900 block">
               {restaurant.name}
               <span
                 title="Close"
@@ -30,49 +37,43 @@ const ModalReservationBody = ({ setShowModal, restaurant }) => {
               Solo {restaurant.availablePlaces} mesas disponibles!
             </p>
           </div>
-          <div>
-            <h1>Donde queres tu mesa?</h1>
+          <div class="justify-between">
+            <h1>Selecciona una fecha</h1>
 
-            <div style={"display: flex"}>
-              <button className="mx-2 my-2 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded text-white px-6 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-indigo-600">
-                Ventana
-              </button>
-
-              <button className="mx-2 my-2 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded text-white px-6 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-indigo-600">
-                Salón
-              </button>
-
-              <button className="mx-2 my-2 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded text-white px-6 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-indigo-600">
-                Terraza
-              </button>
-
-              <button className="mx-2 my-2 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded text-white px-6 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-indigo-600">
-                Patio
-              </button>
+            <div style={"display: flex"} class="justify-between">
+              {dates.map((date) => (
+                <button
+                  onClick={() => setSelectedDate(date.id)}
+                  className={`mx-2 my-2 bg-violet-700 transition duration-150 ease-in-out hover:bg-violet-600 rounded text-white px-6 py-2 text-xs  ${
+                    date.id === selectedDate
+                      ? "outline-none ring-2 ring-offset-2  ring-indigo-600"
+                      : ""
+                  }`}
+                >
+                  {date.date}
+                </button>
+              ))}
             </div>
 
             <h1>Selecciona el horario</h1>
             <div style={"display: flex"}>
-              <button className="mx-2 my-2 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded text-white px-6 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-indigo-600">
-                20:00hs.
-              </button>
-
-              <button className="mx-2 my-2 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded text-white px-6 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-indigo-600">
-                21:00hs.
-              </button>
-
-              <button className="mx-2 my-2 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded text-white px-6 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-indigo-600">
-                22:00hs.
-              </button>
-
-              <button className="mx-2 my-2 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded text-white px-6 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-indigo-600">
-                23:00hs.
-              </button>
+              {times.map((time) => (
+                <button
+                  onClick={() => setSelectedTime(time.id)}
+                  className={`mx-2 my-2 bg-violet-700 transition duration-150 ease-in-out hover:bg-violet-600 rounded text-white px-6 py-2 text-xs  ${
+                    time.id === selectedTime
+                      ? "outline-none ring-2 ring-offset-2  ring-indigo-600"
+                      : ""
+                  }`}
+                >
+                  {time.hour}hs
+                </button>
+              ))}
             </div>
           </div>
 
           <img
-            className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+            className="object-cover w-full mt-5 h-96 px-2 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
             src={restaurant.img}
             style={"width: 100%; border-radius: 15px"}
             alt=""

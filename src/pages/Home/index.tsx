@@ -26,7 +26,7 @@ const Home = () => {
                   src="footer-people.png"
                   className="w-full rounded-lg shadow-lg"
                   id="cta-img-nml-50"
-                  style="z-index: 10"
+                  style="z-index: -x10"
                   alt=""
                 />
               </div>
