@@ -1,16 +1,44 @@
 import { h } from "preact";
+import { useEffect, useCallback } from "preact/compat";
 
-const ModalReservationBody = () => {
+// @ts-ignore
+const ModalReservationBody = ({ setShowModal }) => {
+  // @ts-ignore
+  const escFunction = useCallback((event) => {
+    console.log({ event });
+    if (event.key === "Escape") {
+      //Do whatever when esc is pressed
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("keydown", escFunction, false);
+    console.log("usefff");
+    return () => {
+      document.removeEventListener("keydown", escFunction, false);
+    };
+  }, []);
+
   return (
-    <>
+    <div className="bg-opacity-70 bg-black w-screen h-screen top-0 right-0 absolute z-10 grid place-items-center">
       <div
-        className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-        style={"padding: 10px"}
+        className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mx-auto"
+        style={{ padding: 10 }}
       >
         <div className="px-6 flex flex-wrap">
-          <div>
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <div className="block w-full relative">
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white block">
               Tres Monos
+              <span
+                title="close"
+                className="block cursor-pointer absolute right-0 top-1 text-red-500 hover:text-red-600"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowModal();
+                }}
+              >
+                &times;
+              </span>
             </h5>
             <p
               className="mb-3 font-normal text-gray-700 dark:text-gray-400"
@@ -76,7 +104,7 @@ const ModalReservationBody = () => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

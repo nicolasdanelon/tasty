@@ -5,7 +5,7 @@ import Header from "./Header";
 
 const Layout = () => {
   return (
-    <div class="flex flex-col h-screen justify-between">
+    <div class="flex flex-col h-screen justify-between relative">
       <Header />
       <Outlet />
       <footer

@@ -15,9 +15,9 @@ const Home = () => {
   console.log({ contract });
 
   return (
-    <div className="mt-6 grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 xl:gap-x-8 gap-y-10 gap-x-6 ">
+    <div className="mt-6 grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 xl:gap-x-8 gap-y-10 gap-x-6">
       {restaurants.map((restaurant) => (
-        <div key={restaurant.id} className="group relative">
+        <div key={restaurant.id} className="group">
           <RestaurantCard restaurant={restaurant} />
         </div>
       ))}
