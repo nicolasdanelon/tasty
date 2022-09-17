@@ -9,10 +9,14 @@ const ModalReservationBody = ({ setShowModal, restaurant }) => {
   const [selectedDate, setSelectedDate] = useState("17/09");
   const [selectedTime, setSelectedTime] = useState(1);
 
-  const tasty = useTastyTokenContract();
-
   const makeReservation = async () => {
-    await tasty.contract.reserve();
+    try {
+      const tasty = useTastyTokenContract();
+      const dates = selectedDate.split("/");
+      await tasty.contract.reserve(selectedTime, dates[0], dates[1]);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -89,6 +93,10 @@ const ModalReservationBody = ({ setShowModal, restaurant }) => {
           <button
             className="mx-2 my-2 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded text-white px-6 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-indigo-600"
             style={"width: 100%; height:40px; border-radius: 10px"}
+            onClick={async (e) => {
+              e.preventDefault();
+              await makeReservation();
+            }}
           >
             Reservar!
           </button>
