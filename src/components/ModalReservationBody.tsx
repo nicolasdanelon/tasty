@@ -3,7 +3,7 @@ import { h } from "preact";
 // @ts-ignore
 const ModalReservationBody = ({ setShowModal, restaurant }) => {
   return (
-    <div className="bg-opacity-70 bg-black w-screen h-screen top-0 right-0 absolute z-10 grid place-items-center">
+    <div>
       <div
         className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mx-auto"
         style={{ padding: 10 }}
