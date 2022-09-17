@@ -3,6 +3,8 @@ import { Transition } from "@headlessui/react";
 import Logo from "../assets/Logo";
 import PolygonIcon from "../assets/PolygonIcon";
 import LoginButton from "./LoginButton";
+import { h } from "preact";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,9 +15,9 @@ function Header() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <a href="#" className="flex items-center mb-4 sm:mb-0">
+                <NavLink to="/" className="flex items-center mb-4 sm:mb-0">
                   <Logo color="#862DF7" scale={0.7} />
-                </a>
+                </NavLink>
               </div>
               <div className="hidden md:block">
                 <div className="ml-20 flex items-baseline space-x-4">

@@ -5,14 +5,13 @@ import { useEffect, useState } from "preact/compat";
 // @ts-ignore
 const { ethereum } = window;
 
-const LoginButton = ({ classCSS }: { classCSS: string }) => {
+const LoginButton = ({ classCSS }: { classCSS?: string }) => {
   const { connect, metaState } = useMetamask();
   const [axx, setAxx] = useState("");
 
-  const styles =
-    classCSS !== undefined
-      ? classCSS
-      : "font-medium text-indigo-600 hover:text-indigo-500";
+  const styles = classCSS
+    ? classCSS
+    : "font-medium text-indigo-600 hover:text-indigo-500";
 
   useEffect(() => {
     if (!metaState.isConnected) {

@@ -1,16 +1,41 @@
 import { h } from "preact";
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import ModalReservationBody from "./ModalReservationBody";
 
-const RestaurantCard = (props: { restaurant: any }) => {
+type Restaurant = {
+  rating: number;
+  img: string;
+  address: string;
+  name: string;
+};
+
+const RestaurantCard = (props: { restaurant: Restaurant }) => {
   const { restaurant } = props;
   const { name, address, img, rating } = restaurant;
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const keyDownHandler = (event: {
+      key: string;
+      preventDefault: () => void;
+    }) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setShowModal(false);
+      }
+    };
+
+    document.addEventListener("keydown", keyDownHandler);
+    return () => {
+      document.removeEventListener("keydown", keyDownHandler);
+    };
+  }, []);
+
   return (
     <>
       <div class="flex justify-center rounded-md">
         <div class="rounded-lg shadow-lg bg-white max-w-sm">
-          <a href="#!">
+          <a href="#">
             <img className="rounded-t-lg" src={img} alt="" />
           </a>
           <div class="p-6">
@@ -95,7 +120,12 @@ const RestaurantCard = (props: { restaurant: any }) => {
           </div>
         </div>
       </div>
-      {showModal ? <ModalReservationBody setShowModal={setShowModal} /> : null}
+      {showModal && (
+        <ModalReservationBody
+          restaurant={restaurant}
+          setShowModal={setShowModal}
+        />
+      )}
     </>
   );
 };

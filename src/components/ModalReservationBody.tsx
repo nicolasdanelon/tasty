@@ -1,24 +1,7 @@
 import { h } from "preact";
-import { useEffect, useCallback } from "preact/compat";
 
 // @ts-ignore
-const ModalReservationBody = ({ setShowModal }) => {
-  // @ts-ignore
-  const escFunction = useCallback((event) => {
-    console.log({ event });
-    if (event.key === "Escape") {
-      //Do whatever when esc is pressed
-    }
-  }, []);
-
-  useEffect(() => {
-    document.addEventListener("keydown", escFunction, false);
-    console.log("usefff");
-    return () => {
-      document.removeEventListener("keydown", escFunction, false);
-    };
-  }, []);
-
+const ModalReservationBody = ({ setShowModal, restaurant }) => {
   return (
     <div className="bg-opacity-70 bg-black w-screen h-screen top-0 right-0 absolute z-10 grid place-items-center">
       <div
@@ -28,13 +11,13 @@ const ModalReservationBody = ({ setShowModal }) => {
         <div className="px-6 flex flex-wrap">
           <div className="block w-full relative">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white block">
-              Tres Monos
+              {restaurant.name}
               <span
-                title="close"
+                title="Close"
                 className="block cursor-pointer absolute right-0 top-1 text-red-500 hover:text-red-600"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setShowModal();
+                  setShowModal(false);
                 }}
               >
                 &times;
@@ -44,7 +27,7 @@ const ModalReservationBody = ({ setShowModal }) => {
               className="mb-3 font-normal text-gray-700 dark:text-gray-400"
               style={"color: #862DF7"}
             >
-              Solo 3 mesas disponibles!
+              Solo {Math.floor(Math.random() * 12)} mesas disponibles!
             </p>
           </div>
           <div>
@@ -90,7 +73,7 @@ const ModalReservationBody = ({ setShowModal }) => {
 
           <img
             className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-            src="https://lh5.googleusercontent.com/p/AF1QipPhZuI8AC1CHnTO5VjKA9ihICsFtILK8InV2ddX=w426-h240-k-no"
+            src={restaurant.img}
             style={"width: 100%; border-radius: 15px"}
             alt=""
           ></img>
