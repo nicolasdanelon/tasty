@@ -12,7 +12,7 @@
     "name": "La Ferneteria",
     "address": "Serrano 1349, CABA",
     "rating": 3.4,
-    "availablePlaces": 1,
+    "availablePlaces": 10,
     "img": "restaurants/ferneteria.png"
   },
   {
@@ -20,7 +20,7 @@
     "name": "Boticario",
     "address": "Honduras 5207, CABA",
     "rating": 4.5,
-    "availablePlaces": 1,
+    "availablePlaces": 0,
     "img": "restaurants/boticario.png"
   },
   {
@@ -28,7 +28,7 @@
     "name": "El Purgatorio",
     "address": "Arévalo 2045, CABA",
     "rating": 5.0,
-    "availablePlaces": 1,
+    "availablePlaces":3,
     "img": "restaurants/purgatorio.png"
   },
   {

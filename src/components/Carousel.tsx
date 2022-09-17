@@ -2,11 +2,39 @@ import { useState, useRef, useEffect } from "react";
 
 import data from "../data/restaurants.json";
 import { h } from "preact";
+import ModalReservationBody from "./ModalReservationBody";
 
+type Restaurant = {
+  rating: number;
+  img: string;
+  address: string;
+  name: string;
+  availablePlaces: number;
+};
 const Carousel = () => {
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousel = useRef(null);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedRestaurant, setSelectedRestaurant] =
+    useState<Restaurant | null>(null);
+
+  useEffect(() => {
+    const keyDownHandler = (event: {
+      key: string;
+      preventDefault: () => void;
+    }) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setShowModal(false);
+      }
+    };
+
+    document.addEventListener("keydown", keyDownHandler);
+    return () => {
+      document.removeEventListener("keydown", keyDownHandler);
+    };
+  }, []);
 
   const movePrev = () => {
     if (currentIndex > 0) {
@@ -126,24 +154,72 @@ const Carousel = () => {
                   <h3 className="text-white py-6 px-3 mx-auto text-xl">
                     {resource.name}
                   </h3>
-                  <p class="text-violet-200">
-                    Mesas disponibles: {resource.availablePlaces}
-                  </p>
-                  <br />
-                  <br />
-                  <br />
-                  <button
-                    type="button"
-                    className=" inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                  >
-                    Reservar mesa
-                  </button>
+                  {resource.availablePlaces == 0 && (
+                    <>
+                      <p class="text-violet-200">No hay mesas disponibles</p>
+                      <br />
+                      <br />
+                      <br />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowModal(true);
+                          setSelectedRestaurant(resource);
+                        }}
+                        className=" inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                      >
+                        Ofertar por una mesa
+                      </button>
+                    </>
+                  )}
+                  {resource.availablePlaces > 0 && (
+                    <>
+                      <p class="text-violet-200">
+                        Mesas disponibles: {resource.availablePlaces}
+                      </p>
+                      <br />
+                      <br />
+                      <br />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowModal(true);
+                          setSelectedRestaurant(resource);
+                        }}
+                        className=" inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                      >
+                        Reservar mesa
+                      </button>
+                    </>
+                  )}
                 </a>
               </div>
             );
           })}
         </div>
       </div>
+      {showModal && (
+        <div>
+          <div
+            class="relative z-10"
+            aria-labelledby="modal-title"
+            role="dialog"
+            aria-modal="true"
+          >
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+            <div class="fixed inset-0 z-10 overflow-y-auto">
+              <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                  <ModalReservationBody
+                    restaurant={selectedRestaurant}
+                    setShowModal={setShowModal}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

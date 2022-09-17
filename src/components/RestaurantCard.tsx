@@ -7,11 +7,12 @@ type Restaurant = {
   img: string;
   address: string;
   name: string;
+  availablePlaces: number;
 };
 
 const RestaurantCard = (props: { restaurant: Restaurant }) => {
   const { restaurant } = props;
-  const { name, address, img, rating } = restaurant;
+  const { name, address, img, rating, availablePlaces } = restaurant;
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -106,17 +107,36 @@ const RestaurantCard = (props: { restaurant: Restaurant }) => {
                 {rating}
               </span>
             </div>
-            <button
-              type="button"
-              onClick={() => setShowModal(true)}
-              className=" inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-            >
-              Reservar mesa
-            </button>
-            <p class="text-gray-500	my-5 text-sm	">
-              Para tu reserva deberá stakear 10 MATIC. En caso de no asistir los
-              tokens iran a la cuenta del restaurante
-            </p>
+            {availablePlaces == 0 && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setShowModal(true)}
+                  className=" inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                >
+                  Ofertar por una mesa
+                </button>
+                <p class="text-gray-500	my-5 text-sm	">
+                  Para tu reserva deberá stakear 10 MATIC. En caso de no asistir
+                  los tokens iran a la cuenta del restaurante
+                </p>
+              </>
+            )}
+            {availablePlaces > 0 && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setShowModal(true)}
+                  className=" inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                >
+                  Reservar mesa
+                </button>
+                <p class="text-gray-500	my-5 text-sm	">
+                  Para tu reserva deberá stakear 10 MATIC. En caso de no asistir
+                  los tokens iran a la cuenta del restaurante
+                </p>
+              </>
+            )}
           </div>
         </div>
       </div>
