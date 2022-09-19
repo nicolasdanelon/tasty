@@ -11,13 +11,15 @@ type Restaurant = {
   name: string;
   availablePlaces: number;
 };
+
 const Carousel = () => {
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousel = useRef(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedRestaurant, setSelectedRestaurant] =
-    useState<Restaurant | null>(null);
+    // @ts-ignore
+    useState<Restaurant>(null);
 
   useEffect(() => {
     const keyDownHandler = (event: {
@@ -213,6 +215,8 @@ const Carousel = () => {
                   <ModalReservationBody
                     restaurant={selectedRestaurant}
                     setShowModal={setShowModal}
+                    setHash={() => null}
+                    toggleVisible={() => null}
                   />
                 </div>
               </div>
