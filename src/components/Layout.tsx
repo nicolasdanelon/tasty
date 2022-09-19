@@ -4,6 +4,10 @@ import Logo from "../assets/Logo";
 import Header from "./Header";
 
 const Layout = () => {
+  const url =
+    "https://stardust-explorer.metis.io/address/" +
+    "0x226F472146Dd645A263eE7ee1e49601e599024d2/transactions";
+
   return (
     <div class="flex flex-col h-screen justify-between relative">
       <Header />
@@ -43,7 +47,12 @@ const Layout = () => {
               </a>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <a
+                target="_blank"
+                rel="nofollow"
+                href={url}
+                className="hover:underline"
+              >
                 Contact us
               </a>
             </li>
