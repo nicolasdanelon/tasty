@@ -1,4 +1,5 @@
-import { FunctionComponent, useState } from "preact/compat";
+import { h } from "preact";
+import { useState } from "preact/compat";
 import { Button, Modal, Tooltip } from "react-daisyui";
 import copy from "../assets/copy.svg";
 import ok from "../assets/ok.svg";
@@ -41,18 +42,18 @@ const ModalStatus = ({
         {line2}
         <pre
           style={styles.pre}
-          onClick={() => copyToClipBoard(hash)}
+          onClick={async () => await copyToClipBoard(hash)}
           onMouseLeave={() => (!icon ? setIcon(true) : null)}
         >
           &nbsp;{hash.slice(0, 10)}...
-          <Tooltip message="Copy to clipboard">
+          <Tooltip position="left" message="Copiar al portapapeles">
             <img src={icon ? copy : ok} alt="" style={styles.span} />
           </Tooltip>
         </pre>
       </Modal.Body>
       <Modal.Actions>
         <Button onClick={toggleVisible} color="primary">
-          Close
+          Cerrar
         </Button>
       </Modal.Actions>
     </Modal>

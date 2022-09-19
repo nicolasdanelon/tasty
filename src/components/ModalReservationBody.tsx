@@ -1,21 +1,30 @@
 import { h } from "preact";
 import { useState } from "react";
 import { ethers } from "ethers";
-import dates from "../data/dates.json";
 import times from "../data/times.json";
 import useTastyTokenContract from "../helpers/useTastyTokenContract";
-import ModalStatus from "./ModalStatus";
+import { Restaurant } from "./RestaurantCard";
+import { daysFromToday, getDaysArray } from "../helpers/dates";
 
-// @ts-ignore
-const ModalReservationBody = ({ setShowModal, restaurant }) => {
-  const [selectedDate, setSelectedDate] = useState("17/09");
+type ModalReservationBodyProps = {
+  setShowModal: Function;
+  restaurant: Restaurant;
+  setHash: Function;
+  toggleVisible: Function;
+};
+
+const ModalReservationBody = ({
+  setShowModal,
+  restaurant,
+  setHash,
+  toggleVisible,
+}: ModalReservationBodyProps) => {
+  const futureDate = daysFromToday(3);
+  const rangeDates = getDaysArray(new Date(), futureDate);
+
+  const [selectedDate, setSelectedDate] = useState(rangeDates[0]);
   const [selectedTime, setSelectedTime] = useState(1);
-  const [visible, setVisible] = useState(false);
-  const [hash, setHash] = useState("");
-
-  const toggleVisible = () => {
-    setVisible(!visible);
-  };
+  const [cta, setCta] = useState("Reservar!");
 
   const makeReservation = async () => {
     try {
@@ -32,28 +41,32 @@ const ModalReservationBody = ({ setShowModal, restaurant }) => {
         }
       );
 
-      await action.wait();
+      setShowModal(false);
+
+      // await action.wait();
+
+      console.log(action);
 
       if (action.hash) {
+        tasty.provider
+          .waitForTransaction(action.hash)
+          .then((data) => {
+            toggleVisible();
+            alert(`Transaccion ${data.transactionIndex} realizada`);
+          })
+          .catch((er) => console.log(er));
+        console.log(status);
         setHash(action.hash);
         toggleVisible();
       }
     } catch (e) {
+      setCta("Reservar!");
       console.log(e);
     }
   };
 
   return (
     <div>
-      <ModalStatus
-        toggleVisible={toggleVisible}
-        visible={visible}
-        title="La transacción se está procesando"
-        line1="Toda tu información está segura ahora."
-        line2="Este es el hash de tu transacción: "
-        hash={hash}
-      />
-
       <div
         className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 mx-auto"
         style={{ padding: 10 }}
@@ -82,18 +95,17 @@ const ModalReservationBody = ({ setShowModal, restaurant }) => {
           </div>
           <div class="justify-between">
             <h1>Selecciona una fecha</h1>
-
             <div style={"display: flex"} class="justify-between">
-              {dates.map((date) => (
+              {rangeDates.map((date) => (
                 <button
-                  onClick={() => setSelectedDate(date.date)}
-                  className={`mx-2 my-2 bg-violet-700 transition duration-150 ease-in-out hover:bg-violet-600 rounded text-white px-6 py-2 text-xs  ${
-                    date.date === selectedDate
+                  onClick={() => setSelectedDate(date)}
+                  className={`mx-2 my-2 bg-violet-700 transition duration-150 ease-in-out hover:bg-violet-600 rounded text-white px-6 py-2 text-xs ${
+                    date === selectedDate
                       ? "outline-none ring-2 ring-offset-2  ring-indigo-600"
                       : ""
                   }`}
                 >
-                  {date.date}
+                  {date}
                 </button>
               ))}
             </div>
@@ -103,7 +115,7 @@ const ModalReservationBody = ({ setShowModal, restaurant }) => {
               {times.map((time) => (
                 <button
                   onClick={() => setSelectedTime(time.id)}
-                  className={`mx-2 my-2 bg-violet-700 transition duration-150 ease-in-out hover:bg-violet-600 rounded text-white px-6 py-2 text-xs  ${
+                  className={`mx-2 my-2 bg-violet-700 transition duration-150 ease-in-out hover:bg-violet-600 rounded text-white px-6 py-2 text-xs ${
                     time.id === selectedTime
                       ? "outline-none ring-2 ring-offset-2  ring-indigo-600"
                       : ""
@@ -128,10 +140,11 @@ const ModalReservationBody = ({ setShowModal, restaurant }) => {
             style={"width: 100%; height:40px; border-radius: 10px"}
             onClick={async (e) => {
               e.preventDefault();
+              setCta("Reservando...");
               await makeReservation();
             }}
           >
-            Reservar!
+            {cta}
           </button>
         </div>
       </div>

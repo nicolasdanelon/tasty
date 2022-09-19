@@ -14,8 +14,6 @@ const Home = () => {
 
       const { chainId } = await tasty.provider.getNetwork();
 
-      console.log({ chainId });
-
       if (chainId !== 4) {
         await window.ethereum
           .request({

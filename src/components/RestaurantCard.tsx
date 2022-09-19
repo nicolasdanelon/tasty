@@ -1,8 +1,8 @@
 import { h } from "preact";
-import { useState, useEffect, useRef } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import ModalReservationBody from "./ModalReservationBody";
 
-type Restaurant = {
+export type Restaurant = {
   rating: number;
   img: string;
   address: string;
@@ -10,8 +10,15 @@ type Restaurant = {
   availablePlaces: number;
 };
 
-const RestaurantCard = (props: { restaurant: Restaurant }) => {
-  const { restaurant } = props;
+const RestaurantCard = ({
+  restaurant,
+  toggleVisible,
+  setHash,
+}: {
+  restaurant: Restaurant;
+  toggleVisible: Function;
+  setHash: Function;
+}) => {
   const { name, address, img, rating, availablePlaces } = restaurant;
   const [showModal, setShowModal] = useState(false);
 
@@ -155,6 +162,8 @@ const RestaurantCard = (props: { restaurant: Restaurant }) => {
                   <ModalReservationBody
                     restaurant={restaurant}
                     setShowModal={setShowModal}
+                    toggleVisible={toggleVisible}
+                    setHash={setHash}
                   />
                 </div>
               </div>
