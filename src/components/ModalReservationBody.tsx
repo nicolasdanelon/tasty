@@ -55,9 +55,9 @@ const ModalReservationBody = ({
             alert(`Transaccion ${data.transactionIndex} realizada`);
           })
           .catch((er) => console.log(er));
-        console.log(status);
+
         setHash(action.hash);
-        toggleVisible();
+        // toggleVisible();
       }
     } catch (e) {
       setCta("Reservar!");

@@ -8,23 +8,6 @@ import React from "react";
 import useTastyTokenContract from "../../helpers/useTastyTokenContract";
 
 const Home = () => {
-  useEffect(() => {
-    (async () => {
-      const tasty = useTastyTokenContract();
-
-      const { chainId } = await tasty.provider.getNetwork();
-
-      if (chainId !== 4) {
-        await window.ethereum
-          .request({
-            method: "wallet_switchEthereumChain",
-            params: [{ chainId: "0x4" }],
-          })
-          .catch(() => {});
-      }
-    })();
-  }, []);
-
   return (
     <div>
       <div className="2xl:container 2xl:mx-auto 2xl:px-0 py-3 px-10 pb-10">

@@ -27,7 +27,9 @@ const TastyTokenABI = [
 ];
 
 // Rinkeby
-const contractAddress = "0x8F7F9dfBfbD3875e6013b7DABd1c1523bd8e149B";
+// const contractAddress = "0x8F7F9dfBfbD3875e6013b7DABd1c1523bd8e149B";
+// Stardust
+const contractAddress = "0x226F472146Dd645A263eE7ee1e49601e599024d2";
 
 export default function useTastyTokenContract() {
   const provider = new ethers.providers.Web3Provider(window.ethereum);

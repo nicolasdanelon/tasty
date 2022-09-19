@@ -7,6 +7,7 @@ import { createContext } from "preact/compat";
 import { Theme } from "react-daisyui";
 import { ethers } from "ethers";
 import "./index.sass";
+import EnsureProperNetwork from "./components/EnsureProperNetwork";
 
 export const EthContext = createContext({});
 
@@ -21,14 +22,16 @@ const value = {
 };
 
 render(
-  <MetamaskStateProvider>
-    <EthContext.Provider value={value}>
-      <Theme dataTheme="light">
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </Theme>
-    </EthContext.Provider>
-  </MetamaskStateProvider>,
+  <EnsureProperNetwork id="0x24C">
+    <MetamaskStateProvider>
+      <EthContext.Provider value={value}>
+        <Theme dataTheme="light">
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </Theme>
+      </EthContext.Provider>
+    </MetamaskStateProvider>{" "}
+  </EnsureProperNetwork>,
   document.getElementById("app") as HTMLElement
 );
