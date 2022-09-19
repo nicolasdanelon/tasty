@@ -1,13 +1,11 @@
 import { h } from "preact";
-import { useEffect, useState } from "preact/hooks";
+import { useEffect } from "preact/hooks";
 import Carousel from "../../components/Carousel";
 import Hero from "../../components/Hero";
 import LoginButton from "../../components/LoginButton";
 import { NavLink } from "react-router-dom";
 import React from "react";
-import useTastyTokenContract, {
-  changeNetwork,
-} from "../../helpers/useTastyTokenContract";
+import useTastyTokenContract from "../../helpers/useTastyTokenContract";
 
 const Home = () => {
   useEffect(() => {
@@ -18,8 +16,13 @@ const Home = () => {
 
       console.log({ chainId });
 
-      if (chainId === 4) {
-        await changeNetwork();
+      if (chainId !== 4) {
+        await window.ethereum
+          .request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: "0x4" }],
+          })
+          .catch(() => {});
       }
     })();
   }, []);
@@ -36,7 +39,7 @@ const Home = () => {
             <div class="grow-0 shrink-0 basis-auto w-full lg:w-5/12 mb-12 lg:mb-0">
               <div class="flex lg:py-12">
                 <img
-                  src="footer-people.png"
+                  src="/footer-people.png"
                   className="w-full rounded-lg shadow-lg"
                   id="cta-img-nml-50"
                   style="z-index: -x10"

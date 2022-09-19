@@ -36,25 +36,3 @@ export default function useTastyTokenContract() {
 
   return { contract, provider };
 }
-
-export const changeNetwork = async () => {
-  window.ethereum.request({
-    method: "wallet_addEthereumChain",
-    params: [
-      {
-        chainId: "4",
-        rpcUrls: [
-          "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
-          "https://rpc.ankr.com/eth_rinkeby",
-        ],
-        chainName: "Rinkeby ETH",
-        nativeCurrency: {
-          name: "ETH",
-          symbol: "ETH",
-          decimals: 18,
-        },
-        blockExplorerUrls: ["https://rinkeby.etherscan.io/"],
-      },
-    ],
-  });
-};
