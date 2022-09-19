@@ -1,6 +1,6 @@
 import { h } from "preact";
 import { useEffect } from "preact/hooks";
-import useTastyTokenContract from "../helpers/useTastyTokenContract";
+import useTastyTokenContract from "./useTastyTokenContract";
 
 type EnsureProperNetworkProps = {
   children: ReactNode;

@@ -7,7 +7,7 @@ import { createContext } from "preact/compat";
 import { Theme } from "react-daisyui";
 import { ethers } from "ethers";
 import "./index.sass";
-import EnsureProperNetwork from "./components/EnsureProperNetwork";
+import EnsureProperNetwork from "./helpers/EnsureProperNetwork";
 
 export const EthContext = createContext({});
 
