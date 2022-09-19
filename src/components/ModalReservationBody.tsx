@@ -4,11 +4,18 @@ import { ethers } from "ethers";
 import dates from "../data/dates.json";
 import times from "../data/times.json";
 import useTastyTokenContract from "../helpers/useTastyTokenContract";
+import ModalStatus from "./ModalStatus";
 
 // @ts-ignore
 const ModalReservationBody = ({ setShowModal, restaurant }) => {
   const [selectedDate, setSelectedDate] = useState("17/09");
   const [selectedTime, setSelectedTime] = useState(1);
+  const [visible, setVisible] = useState(false);
+  const [hash, setHash] = useState("");
+
+  const toggleVisible = () => {
+    setVisible(!visible);
+  };
 
   const makeReservation = async () => {
     try {
@@ -16,7 +23,7 @@ const ModalReservationBody = ({ setShowModal, restaurant }) => {
       const value = ethers.utils.parseEther("0.001");
 
       const dates = selectedDate.split("/");
-      await tasty.contract.reserve(
+      const action = await tasty.contract.reserve(
         selectedTime,
         parseInt(dates[0]),
         parseInt(dates[1]),
@@ -24,6 +31,13 @@ const ModalReservationBody = ({ setShowModal, restaurant }) => {
           value,
         }
       );
+
+      await action.wait();
+
+      if (action.hash) {
+        setHash(action.hash);
+        toggleVisible();
+      }
     } catch (e) {
       console.log(e);
     }
@@ -31,6 +45,15 @@ const ModalReservationBody = ({ setShowModal, restaurant }) => {
 
   return (
     <div>
+      <ModalStatus
+        toggleVisible={toggleVisible}
+        visible={visible}
+        title="La transacción se está procesando"
+        line1="Toda tu información está segura ahora."
+        line2="Este es el hash de tu transacción: "
+        hash={hash}
+      />
+
       <div
         className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 mx-auto"
         style={{ padding: 10 }}
