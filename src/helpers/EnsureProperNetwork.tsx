@@ -25,8 +25,6 @@ const EnsureProperNetwork = ({ id, children }: EnsureProperNetworkProps) => {
 
       const { chainId } = await tasty.provider.getNetwork();
 
-      console.log(chainId, Number(id));
-
       if (chainId !== Number(id)) {
         try {
           await switchEthereumChain(id);

@@ -9,10 +9,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    .fade-in {
+      text-align: center;
+      animation: fadeIn 8s;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
 </head>
 
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <h1 class="fade-in">Por favor instalar metamask 🦊</h1>
+  </div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 
