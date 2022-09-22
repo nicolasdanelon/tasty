@@ -22,7 +22,7 @@ const value = {
 };
 
 render(
-  <EnsureProperNetwork id="0x24C">
+  <EnsureProperNetwork id="0x24c">
     <MetamaskStateProvider>
       <EthContext.Provider value={value}>
         <Theme dataTheme="light">

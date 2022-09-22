@@ -7,23 +7,32 @@ type EnsureProperNetworkProps = {
   id: string;
 };
 
+const switchEthereumChain = async (id: string) =>
+  await window.ethereum
+    .request({
+      method: "wallet_switchEthereumChain",
+      params: [{ chainId: id }],
+    })
+    .catch(() => {});
+
 const EnsureProperNetwork = ({ id, children }: EnsureProperNetworkProps) => {
   useEffect(() => {
     (async () => {
       const tasty = useTastyTokenContract();
 
-      // https://stardust.metis.io/?owner=588
+      // https://stardust.metis.io/?owner=599
       // https://chainlist.org/
 
       const { chainId } = await tasty.provider.getNetwork();
 
+      console.log(chainId, Number(id));
+
       if (chainId !== Number(id)) {
-        await window.ethereum
-          .request({
-            method: "wallet_switchEthereumChain",
-            params: [{ chainId: id }],
-          })
-          .catch(() => {});
+        try {
+          await switchEthereumChain(id);
+        } catch (e) {
+          console.error(e);
+        }
       }
     })();
   }, []);
